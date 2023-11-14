@@ -9,10 +9,14 @@ This is a sample repo containing some code to be reviewed by candidates as part 
 3. Push your local clone up to your private repository while preserving history.
 4. Create a pull request in your private repo to merge the `feature-art-search` branch into the `main` branch.
 5. Add a review of the code as though you were looking at a colleague's work.
-   * Give feedback both for anything dangerous and anything that could be improved.
-   * We're measuring for how well you spot and call things out.
-   * Feel free to make any suggestions for code reorganization or alternate approaches.
 6. Share your private repo with `jeromedane` or the reviewer(s) requested when you were sent this challenge
+
+### Details
+
+* This exercise should _probably_ take you 30 minutes to an hour.
+* We're looking to see how you think and measuring for how well you spot and call things out.
+* Give feedback for anything dangerous and anything that could be improved.
+* Feel free to make any suggestions for code reorganization or alternate approaches.
 
 ## Development
 
