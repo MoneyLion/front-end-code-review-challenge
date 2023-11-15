@@ -15,6 +15,7 @@ This is a sample repo containing some code to be reviewed by candidates as part 
 
 * This exercise should _probably_ take you 30 minutes to an hour.
 * We're looking to see how you think and measuring for how well you spot and call things out.
+* The tone of your review should focus on helping a less experienced engineer improve.
 * Give feedback for anything dangerous and anything that could be improved.
 * Feel free to make any suggestions for code reorganization or alternate approaches.
 
