@@ -13,6 +13,7 @@ This is a sample repo containing some code to be reviewed by candidates as part 
 
 ### Details
 
+* Consider cloning and running the code locally so you can see how it works and test suggested changes.
 * This exercise should _probably_ take you 30 minutes to an hour.
 * We're looking to see how you think and measuring for how well you spot and call things out.
 * The tone of your review should focus on helping a less experienced engineer improve.
