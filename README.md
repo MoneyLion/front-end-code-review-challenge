@@ -4,7 +4,9 @@ This is a sample repo containing some code to be reviewed by candidates as part 
 
 ## Scenario
 
-Imagine an early-career engineer on your team proposes this code as a ***prototype*** for your new art search application. It technically meets the product requirements, but the code has ***lots*** of room for improvement. You have plenty of time to rework things, so you can use this code review to asychronously guide and educate your colleague. Do not worry about hurting their feelings. This is a tough engineer that's hungry to learn and is eager for criticism.
+Imagine an early-career engineer on your team proposes this code as a ***prototype*** for your new art search application. It technically meets the product requirements, but the code has ***lots*** of room for improvement. You have plenty of time to rework things, so you can use this code review to asychronously guide and educate your colleague. 
+
+**Do not worry about hurting anyone's feelings.** This is a tough engineer that's hungry to learn and is eager for criticism.
 
 ## Instructions
 
