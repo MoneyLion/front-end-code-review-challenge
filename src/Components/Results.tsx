@@ -1,65 +1,71 @@
 'use client'
 
-import { ImageType } from "../types"
+import React from 'react'
+import Image from 'next/image'
+import { ImageType } from '../types'
+import styles from './Results.module.css'
 
 interface DisplayProps {
-    _score: number
-    title: string
-    image_id: string
-    artist_display: string
+  _score: number
+  title: string
+  image_id: string
+  artist_display: string
 }
 
-const Display: React.FC<DisplayProps> = (image) => {
-    const { title, image_id, artist_display } = image
-    return (
-        <div style={{ 
-            margin: '1em', 
-            border: '1px solid', 
-            padding: '1em',
-            background: '#222',
-            display: 'flex',
-            maxWidth: '400px'
-        }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`} alt={title} height="100" />
-            <div style={{ marginLeft: '1em' }}>
-                <h2 style={{ marginBottom: '0.5em' }}>{title}</h2>
-                <p style={{ marginTop: '0.5em'}}>{artist_display}</p>
-            </div>
-        </div>
-    )
-}
+/*Memoizing Display component to prevent unnecessary re-renders and 
+destructuring props for better readability and using external css file
+for styling instead of inline styles for better maintainability
+*/
+const Display = React.memo(function DisplayComponent({
+  title,
+  image_id,
+  artist_display,
+}: DisplayProps) {
+  return (
+    <div className={styles.displayArt}>
+      {' '}
+      {/* Using Next.js Image component for optimized image loading */}
+      <Image
+        key={`image-${image_id}`}
+        src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
+        alt={title}
+        width={150}
+        height={100}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className={styles.artImage}
+        loading={'lazy'}
+        priority={false}
+      />
+      <div className={styles.artInfo}>
+        <h2 className={styles.artTitle}>{title}</h2>
+        <p className={styles.artArtist}>{artist_display}</p>
+      </div>
+    </div>
+  )
+})
+Display.displayName = 'Display'
 
 type ResultsProps = {
-    isLoading: boolean
-    data: ImageType[]
+  isLoading: boolean
+  data: ImageType[]
 }
 
-const filterOutNudity = (data: ImageType[]) => {
-    const filteredData: ImageType[] = []
-
-    for(let i = 0; i < data.length; i++) {
-        if(!data[i].title.match(/nud(e|ity)/i)) {
-            filteredData.push(data[i])
-        }
-    }
-
-    return filteredData
-}
-
+// Better readability to exclude artworks with title having "nude" or "nudity" in the title
+const filterOutNudity = (data: ImageType[]) =>
+  data.filter((img) => !img.title.match(/nud(e|ity)/i))
 
 const Results = ({ isLoading, data }: ResultsProps): JSX.Element => {
-    if(isLoading) return <></>
-    let sanitizedData = filterOutNudity(
-        data.sort((a: ImageType, b: ImageType) => b._score - a._score)
-    )
-    return (
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            {sanitizedData.map((image, i) => 
-                <Display key={i} {...image} />
-            )}
-        </div>
-    )
+  if (isLoading) return <></>
+  const sanitizedData = filterOutNudity(
+    [...data].sort((a, b) => b._score - a._score),
+  )
+  return (
+    <div className={styles.resultsGrid}>
+      {sanitizedData.map((image) => (
+        <Display key={image.image_id} {...image} />
+      ))}
+    </div>
+  )
 }
 
 export default Results

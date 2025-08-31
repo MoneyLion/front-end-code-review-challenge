@@ -1,0 +1,64 @@
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5em;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em 0;
+}
+
+.displayArt {
+  margin: 1em;
+  border: 1px solid;
+  padding: 1em;
+  background: #222;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.artImage {
+  border-radius: 4px;
+  object-fit: cover;
+  min-width: 0;
+}
+
+.artInfo {
+  margin-left: 1em;
+  min-width: 0;
+  flex: 1;
+}
+
+.artTitle {
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+  word-break: break-word;
+}
+
+.artArtist {
+  margin-top: 0.5em;
+  font-size: 0.95em;
+  word-break: break-word;
+}
+
+@media (max-width: 600px) {
+  .displayArt {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .artImage {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 1em;
+  }
+  .artInfo {
+    margin-left: 0 !important;
+  }
+}
