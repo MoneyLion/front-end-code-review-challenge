@@ -4,7 +4,7 @@ This is a sample repo containing some code to be reviewed by candidates as part 
 
 ## Scenario
 
-Imagine an early-career engineer on your team proposes this code as a ***prototype*** for your new art search application. It technically meets the product requirements, but the code has ***lots*** of room for improvement. You have plenty of time to rework things, so you can use this code review to asychronously guide and educate your colleague. 
+Imagine an early-career engineer on your team proposes this code as a **_prototype_** for your new art search application. It technically meets the product requirements, but the code has **_lots_** of room for improvement. You have plenty of time to rework things, so you can use this code review to asychronously guide and educate your colleague.
 
 **Do not worry about hurting anyone's feelings.** This is a tough engineer that's hungry to learn and is eager for criticism.
 
@@ -19,13 +19,13 @@ Imagine an early-career engineer on your team proposes this code as a ***prototy
 
 ### Details
 
-* This is **not** a typical late stage PR, but an early, naive proposal that needs fixing.
-* **Do not worry about being overly critical**. There's a lot to criticize. 
-* We're measuring for now well you spot problems, explain their flaws, and what you suggest as alternatives.
-* Consider cloning and running the code locally so you can see how it works and test suggested changes.
-* This exercise should _probably_ take you 30 minutes to an hour.
-* Give feedback for anything dangerous and anything that could be improved.
-* Feel free to make any suggestions for code reorganization or alternate approaches.
+- This is **not** a typical late stage PR, but an early, naive proposal that needs fixing.
+- **Do not worry about being overly critical**. There's a lot to criticize.
+- We're measuring for now well you spot problems, explain their flaws, and what you suggest as alternatives.
+- Consider cloning and running the code locally so you can see how it works and test suggested changes.
+- This exercise should _probably_ take you 30 minutes to an hour.
+- Give feedback for anything dangerous and anything that could be improved.
+- Feel free to make any suggestions for code reorganization or alternate approaches.
 
 ### Example
 
