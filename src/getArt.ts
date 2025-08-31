@@ -1,4 +1,4 @@
-import { ImageType, Response } from './types'
+import { Response } from './types'
 
 const API_URL = 'https://api.artic.edu/api/v1/artworks/search'
 
