@@ -46,6 +46,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          {/* Could be level h1 for better visibility. */}
           <h2>
             Docs <span>-&gt;</span>
           </h2>
@@ -82,6 +83,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          {/* Search condition may improve to verify any negetive values. */}
           <h2>
             Deploy <span>-&gt;</span>
           </h2>
