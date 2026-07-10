@@ -1,55 +1,77 @@
-
 'use client'
-
-import { useEffect, useState } from "react"
-import { ImageType } from "../types"
-import Results from "../Components/Results"
-import { artFetcher } from "../getArt"
-
+import { useEffect, useState } from 'react'
+import { ImageType } from '../types'
+import Results from '../Components/Results'
+import { artFetcher } from '../getArt'
 const Search = () => {
     const [error, setError] = useState(false)
     const [search, setSearch] = useState('')
-    const [searchInputValue, setSearchInputValue] = useState('')
-    const [data, setData] = useState([] as ImageType[])
-    const [isLoading, setIsLoading] = useState(true)
-
+    const [inputValue, setInputValue] = useState('')
+    const [data, setData] = useState<ImageType[]>([])
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
-        // set the state as loading
-        setIsLoading(true)
-
-        // fetch the art
-        artFetcher(search)
-            .then(data => {
-                setIsLoading(false)
-                setData(data)
-            })
-            .catch((e) => {
-                setIsLoading(false)
+        if (!search.trim()) {
+            setData([])
+            return
+        }
+        const fetchArtwork = async () => {
+            try {
+                setError(false)
+                setIsLoading(true)
+                const results = await artFetcher(search)
+                setData(results)
+            } catch (error) {
+                console.error('Error fetching artwork:', error)
                 setError(true)
-            })
-    }, [search])
-
-    return (
-        <div style={{ margin: '1em' }}>
-            <div>
-                <input 
-                    value={searchInputValue}
-                    onChange={e => setSearchInputValue(e.currentTarget.value)}
-                    onKeyDown={e => e.key == 'Enter' && setSearch(e.currentTarget.value)}
-                />
-                <button onClick={() => setSearch(searchInputValue)}>Search</button>
-            </div>
-            <p>&nbsp;</p>
-            {error && 'There was an error fetching the art.'}
-            {isLoading 
-                ? 'Loading ...'
-                : !data.length && 'No results.'
+                setData([])
+            } finally {
+                setIsLoading(false)
             }
-            <Results isLoading={isLoading} data={data} />
+        }
+        fetchArtwork()
+    }, [search])
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        const trimmedSearch = inputValue.trim()
+        if (!trimmedSearch) {
+            return
+        }
+        setSearch(trimmedSearch)
+    }
+    return (
+        <div style={{ margin: '1rem' }}>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="art-search">
+                    Search Artwork
+                </label>
+                <div style={{ marginTop: '0.5rem' }}>
+                    <input
+                        id="art-search"
+                        type="text"
+                        placeholder="Search artwork..."
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                    />
+                    <button
+                        type="submit"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Searching...' : 'Search'}
+                    </button>
+                </div>
+            </form>
+            <p>&nbsp;</p>
+            {error && (
+                <p>There was an error fetching artwork. Please try again.</p>
+            )}
+            {!isLoading && !error && search && data.length === 0 && (
+                <p>No results found.</p>
+            )}
+            <Results
+                isLoading={isLoading}
+                data={data}
+            />
         </div>
-
     )
 }
-
 export default Search
-

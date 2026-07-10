@@ -4,7 +4,7 @@ import { ImageType } from "../types"
 
 interface DisplayProps {
     _score: number
-    title: string
+    title?: string
     image_id: string
     artist_display: string
 }
