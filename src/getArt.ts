@@ -1,15 +1,11 @@
-import { ImageType, Response } from "./types"
-
-const fields = [
-    'id',
-    '_score',
-    'image_id',
-    'title',
-    'artist_display'
-]
+import { ImageType } from './types'
 
 export const artFetcher = async (search: string = '') => {
-    return fetch(`https://api.artic.edu/api/v1/artworks/search?q=${search}&fields=${fields.join(',')}`)
-        .then(r => r.json())
-        .then(({ data }: Response) => data as ImageType[])
+  const response = await fetch(`/api/art?q=${encodeURIComponent(search)}`)
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch artworks')
+  }
+
+  return (await response.json()) as ImageType[]
 }
